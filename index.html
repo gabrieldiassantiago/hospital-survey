@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Aricode - pesquisa para hospital</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="apple-touch-icon" sizes="57x57" href="img/apple-icon-57x57.png">
+    <link rel="apple-touch-icon" sizes="60x60" href="img/apple-icon-60x60.png">
+    <link rel="apple-touch-icon" sizes="72x72" href="img/apple-icon-72x72.png">
+    <link rel="apple-touch-icon" sizes="76x76" href="img/apple-icon-76x76.png">
+    <link rel="apple-touch-icon" sizes="114x114" href="img/apple-icon-114x114.png">
+    <link rel="apple-touch-icon" sizes="120x120" href="img/apple-icon-120x120.png">
+    <link rel="apple-touch-icon" sizes="144x144" href="im/apple-icon-144x144.png">
+    <link rel="apple-touch-icon" sizes="152x152" href="img/apple-icon-152x152.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="img/apple-icon-180x180.png">
+    <link rel="icon" type="image/png" sizes="192x192"  href="img/android-icon-192x192.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="img/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="96x96" href="img/favicon-96x96.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="img/favicon-16x16.png">
+    <link rel="manifest" href="img/manifest.json">
+    <meta name="msapplication-TileColor" content="#ffffff">
+    <meta name="msapplication-TileImage" content="/ms-icon-144x144.png">
+    <meta name="theme-color" content="#ffffff">
+        
+    <style>
+        body {
+            font-family: 'Montserrat', sans-serif;
+            background-color: #ffffff;
+        }
+        #content {
+            background-color: rgb(255, 255, 255);
+            border-radius: 10px;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+            padding: 30px;
+            max-width: 600px;
+            margin: 100px auto;
+            
+        }
+        #surveyBtn {
+            background-color: #0918CA;
+            color: #ffffff;
+            transition: background-color 0.3s ease;
+            border-radius: 2rem;
+        }
+        #surveyBtn:hover {
+            background-color: #273199;
+        }
+        #loader {
+            background-color: rgba(0, 0, 0, 0.7);
+        }
+    </style>
+</head>
+<body class="bg-gray-100">
+
+    <div id="content" class="mx-auto">
+        <div class="text-center " >
+            <img class="text-center m-auto mb-10" src="img/logo.svg" alt="">
+            <p class="text-3xl font-bold mb-8 text-gray-800">Pesquisa de avaliação do sistema de saúde hospitalares</p>
+            <button id="surveyBtn" class="bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 rounded" onclick="mostraLoader()">Responder à Pesquisa</button>
+        </div>
+    </div>
+
+    <div id="loader" class="hidden fixed top-0 left-0 w-screen h-screen flex justify-center items-center">
+        <div class="animate-spin rounded-full h-32 w-32 border-t-4 border-blue-500"></div>
+    </div>
+
+    <script>
+        function mostraLoader() {
+            var loader = document.getElementById("loader");
+            loader.classList.remove("hidden");
+
+            setTimeout(function() {
+                loader.classList.add("hidden");
+
+                document.getElementById("content").style.display = "none";
+
+                openSurveyIframe();
+            }, 2000);
+        }
+
+        function openSurveyIframe() {
+            var iframeSrc = "https://forms.gle/ag2pemCqkkMU6NBZ9";
+            var iframe = document.createElement("iframe");
+            iframe.src = iframeSrc;
+            iframe.width = "100%";
+            iframe.height = "2000";
+            iframe.frameBorder = "0";
+            iframe.allowFullscreen = true;
+
+            document.body.appendChild(iframe);
+        }
+    </script>
+
+</body>
+</html>
